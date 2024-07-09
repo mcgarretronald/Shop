@@ -8,10 +8,10 @@ function ProductContainer() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        let response = await fetch('https://api.escuelajs.co/api/v1/products');
+        let response = await fetch('https://dummyjson.com/products');
         let results = await response.json();
-        setProducts(results);
-        console.log(results);
+        setProducts(results.products); 
+        console.log(results.products);
       } catch (err) {
         console.error(err);
       }
@@ -21,23 +21,18 @@ function ProductContainer() {
   }, []);
 
   return (
-    <>
-      <div className="container">
-        <h1>Buy Now</h1>
-        <div className="row justify-content-around">
-          {
-            products.map((prod, index) => {
-              return (
-                <div className="col-md-4 mb-4" key={index} >
-                  <ProductCard products={prod}/>
-                </div>
-              );
-            })
-          }
-        </div>
+    <div className="container">
+      <h1>Buy Now</h1>
+      <div className="row justify-content-around">
+        {products.map((prod) => (
+          <div className="col-md-4 mb-4" key={prod.id}>
+            <ProductCard products={prod} />
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 }
 
 export default ProductContainer;
+

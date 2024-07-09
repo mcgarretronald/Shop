@@ -1,5 +1,7 @@
 import React from "react";
 import "./index.css";
+import { Link } from "react-router-dom";
+
 
 function ProductCard(props) {
   console.log(props);
@@ -11,9 +13,14 @@ function ProductCard(props) {
           <h5 className="card-title">{props.products.title}</h5>
           <h5 className="card-title">${props.products.price}</h5>
           <p className="card-text">{props.products.description}</p>
-          <a href="#" className="btn btn-primary">
+         
+          <Link to="#" className="btn btn-primary">
             Add to Cart
-          </a>
+          </Link>
+          <Link to="/productdetails" state={props}className="btn btn-primary" style={{marginLeft:'20px'}}>
+         View more details
+          </Link>
+        
         </div>
       </div>
     </>
